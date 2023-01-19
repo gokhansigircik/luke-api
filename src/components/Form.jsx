@@ -13,6 +13,7 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const {resource, id} = formState;
+    console.log(resource)
     navigate(`/${resource}/${id}`)
   };
 
@@ -23,8 +24,6 @@ function Form() {
       [name]: value
     })
   };
-
-
 
   return (
     <div className="card">

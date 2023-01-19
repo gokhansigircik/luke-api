@@ -4,26 +4,30 @@ import axios from "axios";
 
 function Person() {
   const { id } = useParams();
-  const [people, setPeople] = useState(null);
+  const [person, setPerson] = useState(null);
 
   useEffect(() => {
     axios
       .get(`https://swapi.dev/api/people/${id}`)
       .then((res) => {
         console.log(res.data);
-        setPeople(res.data);
+        setPerson(res.data);
       })
       .catch((err) => console.log(err));
   }, [id]);
+
   return (
     <div className="card">
-      {people && (
+      {person && (
         <div className="card-body">
-          <h1>{people.name}</h1>
-          <h3>{people.height}</h3>
-          <h3>{people.mass}</h3>
-          <h3>{people.hairColor}</h3>
-          <h3>{people.skinColor}</h3>
+          <h1>Person Info</h1>
+          <h1>{person.name}</h1>
+          <h3>{person.height}</h3>
+          <h3>{person.mass}</h3>
+          <h3>{person.hair_color}</h3>
+          <h3>{person.skin_color}</h3>
+          <h3>{person.birth_year}</h3>
+          <h3>{person.gender}</h3>
         </div>
       )}
     </div>
